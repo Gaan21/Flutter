@@ -48,31 +48,61 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
         floatingActionButton: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            FloatingActionButton(
-              shape: const StadiumBorder(),
-              backgroundColor: const Color.fromARGB(255, 182, 69, 61),
-              onPressed: () {
+            CustomButton(
+              icon: Icons.plus_one,
+              funcionAlPulsar: () {
                 setState(() {
-                  clickCounter += 1;
+                  clickCounter++;
                 });
               },
-              child: const Icon(Icons.plus_one),
             ),
             const SizedBox(
               height: 20,
             ),
-            FloatingActionButton(
-              shape: const LinearBorder(),
-              backgroundColor: const Color.fromARGB(24, 33, 21, 207),
-              onPressed: () {
-                if (clickCounter == 0) return;
+            CustomButton(
+              icon: Icons.exposure_minus_1_rounded,
+              funcionAlPulsar: () {
                 setState(() {
-                  clickCounter -= 1;
+                  if (clickCounter == 0) return;
+                  clickCounter--;
                 });
               },
-              child: const Icon(Icons.exposure_minus_1_outlined),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            CustomButton(
+              icon: Icons.refresh_rounded,
+              funcionAlPulsar: () {
+                setState(() {
+                  clickCounter = 0;
+                });
+              },
+            )
           ],
         ));
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  const CustomButton({
+    super.key,
+    required this.icon,
+    this.funcionAlPulsar,
+  });
+
+  final IconData icon;
+  final VoidCallback? funcionAlPulsar;
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      //shape: const StadiumBorder(),
+      //backgroundColor: const Color.fromARGB(179, 186, 189, 186),
+      onPressed: funcionAlPulsar,
+      enableFeedback: true,
+      elevation: 5,
+      child: Icon(icon),
+    );
   }
 }
