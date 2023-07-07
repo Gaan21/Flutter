@@ -25,7 +25,7 @@ class MessageFieldBox extends StatelessWidget {
       enabledBorder: onlineInputBorder,
       filled: true,
       suffixIcon: IconButton(
-        icon: Icon(Icons.send),
+        icon: const Icon(Icons.send),
         onPressed: () {
           final textValue = textController.value.text;
           onValue(textValue);

@@ -1,5 +1,4 @@
 import 'package:chat_si_no/domain/entities/message.dart';
-import 'package:chat_si_no/infrastructure/models/yes_no_model.dart';
 import 'package:flutter/material.dart';
 
 class HerMessageBubble extends StatelessWidget {
@@ -32,7 +31,10 @@ class HerMessageBubble extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        _ImageBubble(imageUrl: message.imageUrl!),
+        _ImageBubble(message.imageUrl ??
+            //TODO: Si es un gif https da fallo
+            //"https://www.bing.com/images/search?view=detailV2&ccid=kHfDAVA7&id=F62EFC589D46518A39C935334FCC6EAE91530F1D&thid=OIP.kHfDAVA7TvUcjercCmoXoQHaEJ&mediaurl=https%3a%2f%2fmedia.giphy.com%2fmedia%2fZqe1S3qNQxsuQ%2fgiphy.gif&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.9077c301503b4ef51c8deadc0a6a17a1%3frik%3dHQ9Tka5uzE8zNQ%26pid%3dImgRaw%26r%3d0&exph=280&expw=500&q=gif&simid=608036768273481679&FORM=IRPRST&ck=80E3DA7D61A7B4D55B662D3FE6C7714C&selectedIndex=16&ajaxhist=0&ajaxserp=0"),
+            "https://yesno.wtf/assets/no/19-2062f4c91189b1f88a9e809c10a5b0f0.gif"),
         const SizedBox(
           height: 5,
         )
@@ -44,7 +46,7 @@ class HerMessageBubble extends StatelessWidget {
 class _ImageBubble extends StatelessWidget {
   final String imageUrl;
 
-  const _ImageBubble({required this.imageUrl});
+  const _ImageBubble(this.imageUrl);
 
   @override
   Widget build(BuildContext context) {

@@ -8,6 +8,8 @@ class ChatProvider extends ChangeNotifier {
   final getYesOrNoAnswer = GetYesNoAnswer();
 
   List<Message> messagesList = [
+    //Si descomento los dos que hay en la lista da error porque intenta
+    // coger la imageurl cuando no existe
     Message(
       text: "Eyyy",
       fromWho: FromWho.me,

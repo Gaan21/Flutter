@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:chat_si_no/config/http_conexion.dart';
+import 'package:chat_si_no/config/helpers/http_conexion.dart';
 import 'package:chat_si_no/config/theme/app_theme.dart';
 import 'package:chat_si_no/presentation/providers/chat_provider.dart';
 import 'package:chat_si_no/presentation/screens/chat/chat_screen.dart';
