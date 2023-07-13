@@ -26,9 +26,7 @@ class CardsScreen extends StatelessWidget {
 }
 
 class _CardsView extends StatelessWidget {
-  const _CardsView({
-    super.key,
-  });
+  const _CardsView();
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +45,21 @@ class _CardsView extends StatelessWidget {
               label: card["label"],
             ),
           ),
+          ...cards.map(
+            (card) => _CardType3(
+              elevation: card["elevation"],
+              label: card["label"],
+            ),
+          ),
+          ...cards.map(
+            (card) => _CardType4(
+              elevation: card["elevation"],
+              label: card["label"],
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          )
         ],
       ),
     );
@@ -99,7 +112,15 @@ class _CardType2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(12),
+        ),
+        side: BorderSide(color: colors.outline),
+      ),
       elevation: elevation,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
@@ -114,10 +135,90 @@ class _CardType2 extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.topLeft,
-              child: Text(label),
+              child: Text("$label - outline"),
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _CardType3 extends StatelessWidget {
+  final String label;
+  final double elevation;
+
+  const _CardType3({
+    required this.label,
+    required this.elevation,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
+    return Card(
+      color: colors.surfaceVariant,
+      elevation: elevation,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.menu),
+              ),
+            ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text("$label - filled"),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _CardType4 extends StatelessWidget {
+  final String label;
+  final double elevation;
+
+  const _CardType4({
+    required this.label,
+    required this.elevation,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      elevation: elevation,
+      child: Stack(
+        children: [
+          Image.network(
+            'https://picsum.photos/id/${elevation.toInt()}/1024/350',
+            height: 350,
+            fit: BoxFit.cover,
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                ),
+              ),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.menu),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
