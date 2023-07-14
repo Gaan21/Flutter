@@ -5,7 +5,7 @@ class SnackbarScreen extends StatelessWidget {
 
   const SnackbarScreen({super.key});
 
-  void ShowCustomSnackBar(BuildContext context) {
+  void showCustomSnackBar(BuildContext context) {
     ScaffoldMessenger.of(context).clearSnackBars();
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -23,9 +23,24 @@ class SnackbarScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Snackbar y diálogos"),
       ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FilledButton.tonal(
+              onPressed: () {},
+              child: const Text("Licencias"),
+            ),
+            FilledButton.tonal(
+              onPressed: () {},
+              child: const Text("Mostrar diálogo"),
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          ShowCustomSnackBar(context);
+          showCustomSnackBar(context);
         },
         icon: const Icon(Icons.remove_red_eye_outlined),
         label: const Text("Mostrar SnackBar"),
