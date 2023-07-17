@@ -62,4 +62,11 @@ const appMenuItems = <MenuItem>[
     nombreRuta: UiControlsScreen.name,
     icon: Icons.car_rental_rounded,
   ),
+  MenuItem(
+    title: "Tutorial",
+    subtitle: "Primeros pasos",
+    link: "/tutorial",
+    nombreRuta: AppTutorialScreen.name,
+    icon: Icons.accessibility_rounded,
+  ),
 ];
