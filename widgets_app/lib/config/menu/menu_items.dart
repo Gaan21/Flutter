@@ -48,4 +48,11 @@ const appMenuItems = <MenuItem>[
     nombreRuta: SnackbarScreen.name,
     icon: Icons.info_outline,
   ),
+  MenuItem(
+    title: "Animated controller",
+    subtitle: "Statefull widget animado",
+    link: "/animated",
+    nombreRuta: AnimatedScreen.name,
+    icon: Icons.check_box_outline_blank_rounded,
+  ),
 ];
