@@ -55,4 +55,11 @@ const appMenuItems = <MenuItem>[
     nombreRuta: AnimatedScreen.name,
     icon: Icons.check_box_outline_blank_rounded,
   ),
+  MenuItem(
+    title: "UI Controls + Titles",
+    subtitle: "Una serie de controles en Flutter",
+    link: "/ui-controls",
+    nombreRuta: UiControlsScreen.name,
+    icon: Icons.car_rental_rounded,
+  ),
 ];
