@@ -18,11 +18,17 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
 
   void changeShape() {
     final Random random = Random();
-    width = random.nextInt(300) + 50;
-    height = random.nextInt(500) + 50;
+    width =
+        random.nextInt(MediaQuery.of(context).size.height.toInt()).toDouble() +
+            50;
+    height =
+        random.nextInt(MediaQuery.of(context).size.height.toInt()).toDouble() +
+            50;
     color = Color.fromRGBO(
         random.nextInt(255), random.nextInt(255), random.nextInt(255), 1);
-    borderRadius = random.nextInt(50) + 5;
+    borderRadius = random.nextInt(100) + 20;
+
+    setState(() {});
   }
 
   @override
@@ -34,7 +40,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
       body: Center(
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 400),
-          curve: Curves.easeOutCubic,
+          curve: Curves.bounceIn,
           width: width <= 0 ? 0 : width,
           height: height <= 0 ? 0 : height,
           decoration: BoxDecoration(
@@ -45,9 +51,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          return changeShape();
-        },
+        onPressed: () => changeShape(),
         child: const Icon(Icons.play_arrow_rounded),
       ),
     );

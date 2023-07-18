@@ -59,6 +59,7 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Stack(
         children: [
@@ -89,7 +90,7 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
                     from: 15,
                     delay: const Duration(milliseconds: 700),
                     child: FilledButton(
-                      onPressed: () => context.pop,
+                      onPressed: () => context.pop(),
                       child: const Text("Comenzar"),
                     ),
                   ),
@@ -117,26 +118,28 @@ class _Slide extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image(
-              image: AssetImage(slide.imageUrl),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              slide.title,
-              style: titleStyle,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              slide.caption,
-              style: captionStyle,
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image(
+                image: AssetImage(slide.imageUrl),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                slide.title,
+                style: titleStyle,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                slide.caption,
+                style: captionStyle,
+              ),
+            ],
+          ),
         ),
       ),
     );
