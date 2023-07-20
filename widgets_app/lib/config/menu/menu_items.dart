@@ -55,4 +55,25 @@ const appMenuItems = <MenuItem>[
     nombreRuta: AnimatedScreen.name,
     icon: Icons.check_box_outline_blank_rounded,
   ),
+  MenuItem(
+    title: "UI Controls + Titles",
+    subtitle: "Una serie de controles en Flutter",
+    link: "/ui-controls",
+    nombreRuta: UiControlsScreen.name,
+    icon: Icons.car_rental_rounded,
+  ),
+  MenuItem(
+    title: "Tutorial",
+    subtitle: "Primeros pasos",
+    link: "/tutorial",
+    nombreRuta: AppTutorialScreen.name,
+    icon: Icons.accessibility_rounded,
+  ),
+  MenuItem(
+    title: "InfiniteScroll y Pull",
+    subtitle: "Listas infinitas y pull to refresh",
+    link: "/infinite",
+    nombreRuta: InfiniteScrollScreen.name,
+    icon: Icons.list_alt_outlined,
+  ),
 ];
