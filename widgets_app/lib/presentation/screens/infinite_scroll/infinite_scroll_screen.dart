@@ -119,7 +119,6 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
 
 class _ListViewImagenes extends StatelessWidget {
   const _ListViewImagenes({
-    super.key,
     required this.scrollController,
     required this.imagesIds,
   });
