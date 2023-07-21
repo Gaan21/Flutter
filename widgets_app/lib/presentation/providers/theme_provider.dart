@@ -10,3 +10,20 @@ final Provider<List<Color>> colorListProvider =
 
 final StateProvider<int> selectedIndexColorProvider =
     StateProvider<int>((ref) => 0);
+
+final themeNotifierProvider =
+//Primero la clase que controla y despues la instancian que se crea
+    StateNotifierProvider<ThemeNotifier, AppTheme>((ref) => ThemeNotifier());
+
+class ThemeNotifier extends StateNotifier<AppTheme> {
+  //Estado = nueva instancia de AppTheme
+  ThemeNotifier() : super(AppTheme());
+
+  void toggleDarkMode() {
+    state = state.copyWith(modoNoche: !state.modoNoche);
+  }
+
+  void changeColorIndex(int colorIndex) {
+    state = state.copyWith(selectedColor: colorIndex);
+  }
+}

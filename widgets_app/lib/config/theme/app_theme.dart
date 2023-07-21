@@ -31,4 +31,10 @@ class AppTheme {
           centerTitle: true,
         ),
       );
+
+  AppTheme copyWith({int? selectedColor, bool? modoNoche}) {
+    return AppTheme(
+        selectedColor: selectedColor ?? this.selectedColor,
+        modoNoche: modoNoche ?? this.modoNoche);
+  }
 }
