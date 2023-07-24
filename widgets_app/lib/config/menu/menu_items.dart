@@ -19,6 +19,13 @@ class MenuItem {
 
 const appMenuItems = <MenuItem>[
   MenuItem(
+    title: "Counter screen",
+    subtitle: "Contador Riverpod al pulsar",
+    link: "/contador",
+    nombreRuta: CounterScreen.name,
+    icon: Icons.add_box,
+  ),
+  MenuItem(
     title: "Botones",
     subtitle: "Varios botones en Flutter",
     link: "/buttons",
@@ -73,5 +80,12 @@ const appMenuItems = <MenuItem>[
     link: "/infinite",
     nombreRuta: InfiniteScrollScreen.name,
     icon: Icons.list_alt_outlined,
+  ),
+  MenuItem(
+    title: "Temas",
+    subtitle: "Cambiador de temas",
+    link: "/temas",
+    nombreRuta: ThemeChangerScreen.name,
+    icon: Icons.color_lens_outlined,
   ),
 ];
