@@ -7,6 +7,7 @@ final nowPlayingMoviesProvider =
     StateNotifierProvider<MoviesNotifier, List<Movie>>((ref) {
   //La referencia a la función que se ejecutara en la clase MoviesNotifier
   final fetchMoreMovies = ref.watch(movieRepositoryProvider).getNowPlaying;
+  //TODO: Me pierdo en este punto
 
   return MoviesNotifier(fetchMoreMovies: fetchMoreMovies);
 });
