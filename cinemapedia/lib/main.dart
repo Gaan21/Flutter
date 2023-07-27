@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cinemapedia/config/helpers/config_http.dart';
 import 'package:flutter/material.dart';
 import 'package:cinemapedia/config/router/app_router.dart';
 import 'package:cinemapedia/config/theme/app_theme.dart';
@@ -12,6 +15,7 @@ Future<void> main(List<String> args) async {
       child: MainApp(),
     ),
   );
+  HttpOverrides.global = MyHttpOverrides();
 }
 
 class MainApp extends StatelessWidget {
