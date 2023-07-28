@@ -41,8 +41,9 @@ class MovieFromMovieDB {
         originalTitle: json["original_title"],
         overview: json["overview"] ?? "",
         popularity: json["popularity"]?.toDouble(),
-        posterPath: json["poster_path"] ?? "",
-        releaseDate: DateTime.parse(json["release_date"]),
+        posterPath: json["poster_path"] ?? "no-poster",
+        releaseDate:
+            DateTime.parse(json["release_date"] ?? DateTime.now().toString()),
         title: json["title"],
         video: json["video"],
         voteAverage: json["vote_average"]?.toDouble(),
