@@ -42,27 +42,50 @@ class _HomeViewState extends ConsumerState<_HomeView> {
       return const CircularProgressIndicator();
     }
 
-    return Column(
-      children: [
-        const CustomAppbar(),
-        MoviesSlideshow(movies: slideShowMoviesSublist),
-        MovieHorizontalListview(
-          loadNextPage: () {
-            ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
-          },
-          movies: nowPlayingMovies,
-          title: "En cines",
-          subTitle: "Lunes 20",
+    return CustomScrollView(slivers: [
+      const SliverAppBar(
+        floating: true,
+        flexibleSpace: FlexibleSpaceBar(
+          title: CustomAppbar(),
         ),
-        /* MovieHorizontalListview(
-          loadNextPage: () {
-            ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
-          },
-          movies: nowPlayingMovies,
-          title: "En cines",
-          subTitle: "Lunes 20",
-        ), */
-      ],
-    );
+      ),
+      SliverList(
+        delegate: SliverChildBuilderDelegate((context, index) {
+          return Column(
+            children: [
+              //const CustomAppbar(),
+              MoviesSlideshow(movies: slideShowMoviesSublist),
+              MovieHorizontalListview(
+                loadNextPage: () {
+                  ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+                },
+                movies: nowPlayingMovies,
+                title: "En cines",
+                subTitle: "Lunes 20",
+              ),
+              MovieHorizontalListview(
+                loadNextPage: () {
+                  ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+                },
+                movies: nowPlayingMovies,
+                title: "Proximamente",
+                subTitle: "Lunes 20",
+              ),
+              MovieHorizontalListview(
+                loadNextPage: () {
+                  ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+                },
+                movies: nowPlayingMovies,
+                title: "Populares",
+                subTitle: "Lunes 20",
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          );
+        }, childCount: 1),
+      )
+    ]);
   }
 }
