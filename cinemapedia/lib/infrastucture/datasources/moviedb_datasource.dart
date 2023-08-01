@@ -1,11 +1,12 @@
 import 'package:cinemapedia/config/constants/environment.dart';
-import 'package:cinemapedia/domain/datasources/movies_dataSource.dart';
+import 'package:cinemapedia/domain/datasources/movies_datasource.dart';
+
 import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:cinemapedia/infrastucture/mappers/movie_mapper.dart';
 import 'package:cinemapedia/infrastucture/models/moviedb/moviedb_response.dart';
 import 'package:dio/dio.dart';
 
-class MoviedbDatasource extends MoviesDataSource {
+class MoviedbDatasource implements MoviesDataSource {
   final Dio dio = Dio(
     BaseOptions(
       baseUrl: "https://api.themoviedb.org/3",
@@ -34,5 +35,11 @@ class MoviedbDatasource extends MoviesDataSource {
         .toList();
 
     return movies;
+  }
+
+  @override
+  Future<List<Movie>> getPopular({int page = 1}) {
+    // TODO: implement getPopular
+    throw UnimplementedError();
   }
 }
