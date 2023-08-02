@@ -52,62 +52,70 @@ class _HomeViewState extends ConsumerState<_HomeView> {
       return const CircularProgressIndicator();
     }
 
-    return CustomScrollView(
-        //TODO:Hacer que aparezca el Widget solo cuando ha cargado por completo
-        slivers: [
-          const SliverAppBar(
-            floating: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: CustomAppbar(),
+    return Visibility(
+      visible: !initialLoading,
+      replacement: const FullScreenLoader(),
+      child: CustomScrollView(
+          //TODO:Hacer que aparezca el Widget solo cuando ha cargado por completo
+          slivers: [
+            const SliverAppBar(
+              floating: true,
+              flexibleSpace: FlexibleSpaceBar(
+                title: CustomAppbar(),
+              ),
             ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-              return Column(
-                children: [
-                  //const CustomAppbar(),
-                  MoviesSlideshow(movies: slideShowMoviesSublist),
-                  MovieHorizontalListview(
-                    loadNextPage: () {
-                      ref
-                          .read(nowPlayingMoviesProvider.notifier)
-                          .loadNextPage();
-                    },
-                    movies: nowPlayingMovies,
-                    title: "En cines",
-                    subTitle: "Hoy",
-                  ),
-                  MovieHorizontalListview(
-                    loadNextPage: () {
-                      ref.read(upcomingMoviesProvider.notifier).loadNextPage();
-                    },
-                    movies: upcomingMovies,
-                    title: "Proximamente",
-                    subTitle: "Lunes 20",
-                  ),
-                  MovieHorizontalListview(
-                    loadNextPage: () {
-                      ref.read(topRatedMoviesProvider.notifier).loadNextPage();
-                    },
-                    movies: topRatedMovies,
-                    title: "Mejor Valoradas",
-                    subTitle: "Lunes 20",
-                  ),
-                  MovieHorizontalListview(
-                    loadNextPage: () {
-                      ref.read(popularMoviesProvider.notifier).loadNextPage();
-                    },
-                    movies: popularMovies,
-                    title: "Populares",
-                    subTitle: "Lunes 20",
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                ],
-              );
-            }, childCount: 1),
-          )
-        ]);
+            SliverList(
+              delegate: SliverChildBuilderDelegate((context, index) {
+                return Column(
+                  children: [
+                    //const CustomAppbar(),
+                    MoviesSlideshow(movies: slideShowMoviesSublist),
+                    MovieHorizontalListview(
+                      loadNextPage: () {
+                        ref
+                            .read(nowPlayingMoviesProvider.notifier)
+                            .loadNextPage();
+                      },
+                      movies: nowPlayingMovies,
+                      title: "En cines",
+                      subTitle: "Hoy",
+                    ),
+                    MovieHorizontalListview(
+                      loadNextPage: () {
+                        ref
+                            .read(upcomingMoviesProvider.notifier)
+                            .loadNextPage();
+                      },
+                      movies: upcomingMovies,
+                      title: "Proximamente",
+                      subTitle: "Lunes 20",
+                    ),
+                    MovieHorizontalListview(
+                      loadNextPage: () {
+                        ref
+                            .read(topRatedMoviesProvider.notifier)
+                            .loadNextPage();
+                      },
+                      movies: topRatedMovies,
+                      title: "Mejor Valoradas",
+                      subTitle: "Lunes 20",
+                    ),
+                    MovieHorizontalListview(
+                      loadNextPage: () {
+                        ref.read(popularMoviesProvider.notifier).loadNextPage();
+                      },
+                      movies: popularMovies,
+                      title: "Populares",
+                      subTitle: "Lunes 20",
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                );
+              }, childCount: 1),
+            )
+          ]),
+    );
   }
 }
