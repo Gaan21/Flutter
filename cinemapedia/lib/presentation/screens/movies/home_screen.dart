@@ -48,6 +48,8 @@ class _HomeViewState extends ConsumerState<_HomeView> {
       return const CircularProgressIndicator();
     }
 
+    return FullScreenLoader();
+
     return CustomScrollView(slivers: [
       const SliverAppBar(
         floating: true,
