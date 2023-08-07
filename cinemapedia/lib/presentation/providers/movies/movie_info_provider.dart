@@ -1,7 +1,13 @@
 import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// final movieInfoProvider =
+// TODO: Tarea final movieInfoProvider =
+/* final movieInfoProvider =
+    StateNotifierProvider<MoviesNotifier, List<Movie>>((ref) {
+  final fetchMoreMovies = ref.watch(movieRepositoryProvider).getPopular;
+
+  return MoviesNotifier(fetchMoreMovies: fetchMoreMovies);
+}); */
 
 typedef GetMovieCallback = Future<Movie> Function(String movieId);
 
