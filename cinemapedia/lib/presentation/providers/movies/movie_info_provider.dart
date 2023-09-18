@@ -1,13 +1,13 @@
 import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'movies_repository_provider.dart';
 
-// TODO: Tarea final movieInfoProvider =
-/* final movieInfoProvider =
-    StateNotifierProvider<MoviesNotifier, List<Movie>>((ref) {
-  final fetchMoreMovies = ref.watch(movieRepositoryProvider).getPopular;
+final movieInfoProvider =
+    StateNotifierProvider<MovieMapNotifier, Map<String, Movie>>((ref) {
+  final movieRepository = ref.watch(movieRepositoryProvider);
 
-  return MoviesNotifier(fetchMoreMovies: fetchMoreMovies);
-}); */
+  return MovieMapNotifier(getMovie: movieRepository.getMovieById);
+});
 
 typedef GetMovieCallback = Future<Movie> Function(String movieId);
 
@@ -20,7 +20,7 @@ class MovieMapNotifier extends StateNotifier<Map<String, Movie>> {
 
   Future<void> loadMovie(String movieId) async {
     if (state[movieId] != null) return;
-
+    print("Realizando peticion");
     final movie = await getMovie(movieId);
 
     state = {...state, movieId: movie};

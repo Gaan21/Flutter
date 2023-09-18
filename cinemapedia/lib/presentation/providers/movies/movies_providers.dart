@@ -45,7 +45,9 @@ class MoviesNotifier extends StateNotifier<List<Movie>> {
   Future<void> loadNextPage() async {
     if (isLoading) return;
     isLoading == true;
+
     print("object");
+
     //TODO: Sigue llamando a este print demasiadas veces y por tanto
     //carga demasiadas paginas
     currentPage++;
